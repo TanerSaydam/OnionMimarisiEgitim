@@ -12,9 +12,9 @@ namespace OnionMimarisi.Domain.Dtos
     {
 
         [XmlElement(ElementName = "Customers")]
-        public Customers Customers { get; set; }
+        public CustomersDto Customers { get; set; }
 
         [XmlElement(ElementName = "Orders")]
-        public Orders Orders { get; set; }
+        public OrdersDto Orders { get; set; }
     }
 }

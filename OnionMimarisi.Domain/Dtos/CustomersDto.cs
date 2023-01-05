@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 namespace OnionMimarisi.Domain.Dtos
 {
     [XmlRoot(ElementName = "Customers")]
-    public class Customers
+    public class CustomersDto
     {
 
         [XmlElement(ElementName = "Customer")]

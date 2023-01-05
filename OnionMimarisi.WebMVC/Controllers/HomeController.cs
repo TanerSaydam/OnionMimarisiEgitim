@@ -7,6 +7,7 @@ using OnionMimarisi.Application.Features.Commands.OrderFeature.RemoveById;
 using OnionMimarisi.Application.Features.Commands.OrderFeature.UpdateOrder;
 using OnionMimarisi.Application.Features.Commands.ProductFeature.CreateProduct;
 using OnionMimarisi.Application.Features.Commands.UserFeature.CreateUser;
+using OnionMimarisi.Application.Features.Queries.CustomerFeature.GetCustomerWithOrderList;
 using OnionMimarisi.Application.Features.Queries.OrderFeature.GetAllOrder;
 using OnionMimarisi.Application.Features.Queries.OrderFeature.GetById;
 using OnionMimarisi.Application.Features.Queries.ProductFeature.GetAllProduct;
@@ -31,8 +32,19 @@ namespace OnionMimarisi.WebMVC.Controllers
         {
             GetAllOrderQueryRequest request = new();
             var result = await _mediator.Send(request);
+
+
+            GetCustomerWithOrderListQueryRequest getCustomerWithOrderListQueryRequest = new() { CustomerId = "GREAL" };
+            GetCustomerWithOrderListQueryResponse respone2 = await _mediator.Send(getCustomerWithOrderListQueryRequest);
+
+
+
+
+
             return View(result.Orders.ToList());
         }
+
+
 
         public async Task<IActionResult> GetByOrderId(int id)
         {

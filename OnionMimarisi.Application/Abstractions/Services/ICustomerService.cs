@@ -1,4 +1,5 @@
-﻿using OnionMimarisi.Domain.Entities;
+﻿using OnionMimarisi.Domain.Dtos;
+using OnionMimarisi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,10 @@ namespace OnionMimarisi.Application.Abstractions.Services
     public interface ICustomerService
     {
         void RemoveAll();
+        string GetCustomerNameByCustomerID(string customerID);
         Task CreateXmlRangeAsync(IEnumerable<Customer> customers);
+
+        CustomerWithOrderListDto GetCustomerWithOrderList(string customerID);
         
     }
 }

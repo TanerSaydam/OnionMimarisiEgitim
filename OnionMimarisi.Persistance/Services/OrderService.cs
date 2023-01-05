@@ -2,6 +2,7 @@
 using OnionMimarisi.Application.Abstractions.Services;
 using OnionMimarisi.Application.Repositories.OrderRepository;
 using OnionMimarisi.Application.Repositories.Repository;
+using OnionMimarisi.Domain.Dtos;
 using OnionMimarisi.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,22 @@ namespace OnionMimarisi.Persistance.Services
         {
             var result = _orderReadRepository.GetAll().Include("ShipInfo");
             return result;
+        }
+
+        public IList<OrderDto> GetAllOrdersWithCustomers()
+        {
+            var result = _orderReadRepository.GetAll().Include("ShipInfo").Select(s=> new OrderDto
+            {
+                CustomerID = s.CustomerID,
+                EmployeeID = s.EmployeeID,
+                Id = s.Id,
+                OrderDate = s.OrderDate,
+                RequiredDate = s.RequiredDate,
+                ShipInfo = s.ShipInfo,
+                CustomerName = _customerService.GetCustomerNameByCustomerID(s.CustomerID) 
+            });
+
+            return result.ToList();
         }
 
         public async Task<Order> GetById(int id)

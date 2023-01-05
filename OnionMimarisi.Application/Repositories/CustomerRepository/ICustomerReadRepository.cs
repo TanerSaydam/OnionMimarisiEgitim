@@ -1,4 +1,5 @@
 ﻿using OnionMimarisi.Application.Repositories.Repository;
+using OnionMimarisi.Domain.Dtos;
 using OnionMimarisi.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,6 @@ namespace OnionMimarisi.Application.Repositories.CustomerRepository
 {
     public interface ICustomerReadRepository : IReadRepository<Customer>
     {
+        CustomerWithOrderListDto GetCustomerWithOrderList(string customerID);
     }
 }

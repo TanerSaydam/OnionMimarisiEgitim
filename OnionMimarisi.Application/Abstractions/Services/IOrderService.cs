@@ -1,4 +1,5 @@
-﻿using OnionMimarisi.Domain.Entities;
+﻿using OnionMimarisi.Domain.Dtos;
+using OnionMimarisi.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace OnionMimarisi.Application.Abstractions.Services
     {
         Task CustomerAndOrderListCreateAsync(IEnumerable<Customer> customers, IEnumerable<Order> orders);
         IQueryable<Order> GetAllOrders();
+        IList<OrderDto> GetAllOrdersWithCustomers();
         Task RemoveById(int id);
 
         Task<Order> GetById(int id);
