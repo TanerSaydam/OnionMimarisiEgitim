@@ -33,12 +33,8 @@ namespace OnionMimarisi.WebMVC.Controllers
             GetAllOrderQueryRequest request = new();
             var result = await _mediator.Send(request);
 
-
             GetCustomerWithOrderListQueryRequest getCustomerWithOrderListQueryRequest = new() { CustomerId = "GREAL" };
             GetCustomerWithOrderListQueryResponse respone2 = await _mediator.Send(getCustomerWithOrderListQueryRequest);
-
-
-
 
 
             return View(result.Orders.ToList());
