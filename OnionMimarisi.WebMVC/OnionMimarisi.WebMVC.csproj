@@ -22,4 +22,8 @@
     <ProjectReference Include="..\OnionMimarisi.Persistance\OnionMimarisi.Persistance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
 </Project>

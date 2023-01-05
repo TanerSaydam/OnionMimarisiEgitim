@@ -20,6 +20,11 @@ namespace OnionMimarisi.Persistance.Repositories.Repository
 
         public DbSet<T> Entity => _context.Set<T>();
 
+        public async Task AddRangeAsync(IEnumerable<T> entities)
+        {
+            await Entity.AddRangeAsync(entities);
+        }
+
         public async Task CreateAsync(T entity)
         {
             await Entity.AddAsync(entity);
@@ -30,15 +35,37 @@ namespace OnionMimarisi.Persistance.Repositories.Repository
             Entity.Remove(entity);
         }
 
+        public void RemoveAll()
+        {
+            var result = Entity.ToList();
+            RemoveRange(result);
+        }
+
         public async Task RemoveById(string id)
         {
             T entity = await Entity.FindAsync(Guid.Parse(id));
             Remove(entity);
         }
 
+        public async Task RemoveByIntId(int id)
+        {
+            T entity = await Entity.FindAsync(id);
+            Remove(entity);
+        }
+
+        public void RemoveRange(IEnumerable<T> entities)
+        {
+            Entity.RemoveRange(entities);
+        }
+
         public void Update(T entity)
         {
             Entity.Update(entity);
+        }
+
+        public void UpdateRange(IEnumerable<T> entities)
+        {
+            Entity.UpdateRange(entities);
         }
     }
 }

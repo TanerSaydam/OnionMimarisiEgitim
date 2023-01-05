@@ -1,0 +1,32 @@
+﻿@model OnionMimarisi.Domain.Entities.Order
+@{
+}
+
+<form asp-controller="Home" asp-action="UpdateOrder" method="post">
+    <input class="form-control" hidden="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group mt-1">
+        CustomerId
+        <input class="form-control" name="CustomerId" value="@Model.CustomerID" />
+    </div>
+    <div class="form-group mt-1">
+        EmployeeID
+        <input class="form-control" name="EmployeeID" value="@Model.EmployeeID" />
+    </div>
+    <div class="form-group mt-1">
+        OrderDate
+        <input type="date" class="form-control" name="OrderDate" value="@Model.OrderDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div class="form-group mt-1">
+        RequiredDate
+        <input type="date" class="form-control" name="RequiredDate" value="@Model.RequiredDate.ToString("yyyy-MM-dd")" />
+    </div>
+    
+    <div class="form-group mt-1">
+        ShipName
+        <input class="form-control" name="ShipName" value="@Model.ShipInfo.ShipName" />
+    </div>
+
+    <div class="form-group mt-1">
+        <button class="btn btn-warning w-100">Güncelle</button>
+    </div>
+</form>

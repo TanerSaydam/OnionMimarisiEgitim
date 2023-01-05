@@ -18,5 +18,10 @@ namespace OnionMimarisi.Persistance.Context
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<FullAddress> FullAddresses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<ShipInfo> ShipInfos { get; set; }
+
     }
 }

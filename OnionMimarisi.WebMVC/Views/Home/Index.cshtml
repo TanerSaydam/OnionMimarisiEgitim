@@ -1,8 +1,55 @@
-﻿@{
+﻿@model List<OnionMimarisi.Domain.Entities.Order>
+@{
+    int n = 0;
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mt-4">
+    <div class="col-md-4 mt-4">
+        <form asp-controller="Home" asp-action="FileSave" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            Dosya Yükle
+            <input type="file" class="form-control" name="file"/>
+        </div>
+        <div class="form-group mt-2">
+            <button class="btn btn-primary w-100">Kaydet</button>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="form-group mt-2">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>CustomerId</th>
+                <th>EmployeeId</th>
+                <th>OrderDate</th>
+                <th>RequiredDate</th>
+                <th>ShipInfo_ShipName</th>
+                <th>ShipInfo_ShipAddress</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>                
+                <td>@(n++)</td>
+                <td>@order.CustomerID</td>
+            <td>@order.EmployeeID</td>
+            <td>@order.OrderDate.ToString("dd.MM.yyyy")</td>
+            <td>@order.RequiredDate.ToString("dd.MM.yyyy")</td>
+            <td>@order.ShipInfo.ShipName</td>
+            <td>@order.ShipInfo.ShipAddress</td>
+            <td>
+                        <a href="/Home/GetByOrderId?id=@order.Id" class="btn btn-sm btn-warning">Güncelle</a>
+                        <a href="/Home/RemoveOrderById?id=@order.Id" class="btn btn-sm btn-danger mx-1">Sil</a>
+            </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
